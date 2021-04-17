@@ -1,0 +1,15 @@
+@import url(section.css);
+@import url(header.css);
+
+.container {
+  height: 100%;
+  background-image: linear-gradient(to bottom,rgb(9, 226, 226), #666);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, auto);
+  gap: 4em;
+}
+
+h1 {
+  font-size: 4em;
+}
