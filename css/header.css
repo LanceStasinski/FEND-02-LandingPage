@@ -1,14 +1,18 @@
-header {
+#navbar {
+  position: fixed;
+  top: 0;
   width: 100vw;
   background-color: white;
+  box-shadow: 0px 2px 2px  rgba(0, 0, 0, 0.3);
 }
 
   #nav-list {
       list-style-type: none;
-      margin: 0px;
+      margin: 0px 1em 0px 0px;
       padding: 0px;
       overflow: hidden;
-      box-shadow: 0px 2px 2px  rgba(0, 0, 0, 0.3);
+      float: right;
+      margin-right: 2em;
   }
 
   header li {
@@ -24,7 +28,7 @@ header {
   }
 
   header li a:hover {
-      background-color: #333;
+      background-color:rgb(9, 226, 226);
       color: white;
   }
 
