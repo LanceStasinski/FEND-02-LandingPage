@@ -17,19 +17,16 @@
 
   header li {
       float: left;
-  } 
-
-  header li a {
       display: block;
       color: black;
       text-align: center;
       padding: 14px 16px;
-      text-decoration: none;
-  }
+  } 
 
-  header li a:hover {
-      background-color:rgb(9, 226, 226);
-      color: white;
+  header li:hover {
+    background-color:rgb(9, 226, 226);
+    color: white;
+    cursor: pointer;
   }
 
   .active {
