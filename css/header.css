@@ -7,28 +7,28 @@
 }
 
   #nav-list {
-      list-style-type: none;
-      margin: 0px 1em 0px 0px;
-      padding: 0px;
-      overflow: hidden;
-      float: right;
-      margin-right: 2em;
+    list-style-type: none;
+    margin: 0px 1em 0px 0px;
+    padding: 0px;
+    overflow: hidden;
+    float: right;
+    margin-right: 2em;
   }
 
   header li {
-      float: left;
-      display: block;
-      color: black;
-      text-align: center;
-      padding: 14px 16px;
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
   } 
 
   header li:hover {
-    background-color:rgb(9, 226, 226);
+    background-color: #888;
     color: white;
     cursor: pointer;
   }
 
   .active {
-      background-color: rgb(9, 226, 226);
+    background-color: rgb(9, 226, 226);
   }

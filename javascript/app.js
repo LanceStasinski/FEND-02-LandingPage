@@ -1,22 +1,22 @@
-//function that detects if element is in viewport. Modified from https://www.javascripttutorial.net/dom/css/check-if-an-element-is-visible-in-the-viewport/
+//function that detects if element is partially in viewport. Modified from https://www.javascripttutorial.net/dom/css/check-if-an-element-is-visible-in-the-viewport/
 const inViewport = function(element) {
   //get an element's position and position relative to the viewport
   const rect = element.getBoundingClientRect();
-  //return true if top and left of an element are in the window and the bottom and right are either in the window or client within a window
+  //return true if bottom and left of an element are in the window and the top and right are either in the window or client within a window
   return (
-      rect.top >= 0 &&
+      rect.bottom >= 0 &&
       rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 }
 
 //build the menu using section information
 
-const navigationList = document.getElementById('nav-list');
+const navigationList = document.getElementById("nav-list");
 
 //get the number of sections. The number will be used in the following for loop.
-const numberOfCards = document.getElementsByClassName('card').length;
+const numberOfCards = document.getElementsByClassName("card").length;
 
 for (i = 1; i <= numberOfCards; i++) {
   //create a string that specifies an h2 element within the section
@@ -42,13 +42,14 @@ for (i = 1; i <= numberOfCards; i++) {
   let target = document.querySelector(itemLink);
 
   //when the navbar is clicked, scroll smoothly to the specified section
-  newLi.addEventListener('click', function () {
+  newLi.addEventListener("click", function () {
     target.scrollIntoView({
       behavior: "smooth",
       block: "center"
     })
   });
 
+  //when linked section is partially in view, set the li class to 'active'
   document.addEventListener("scroll", function () {
     if (inViewport(target)) {
       newLi.classList.add("active");
@@ -58,31 +59,15 @@ for (i = 1; i <= numberOfCards; i++) {
   })
 }
 
-//if section is in view, set navbar link to active
-/*
-for (let i = 1; i <= numberOfCards; i++){
-  let sectionInView = document.getElementById("section" + i);
-  let navItem = document.getElementById("#list-item" + i)
-  document.addEventListener("scroll", function () {
-    if (inViewport(sectionInView)) {
-      navItem.classList.add("active");
-    } else {
-      navItem.classList.remove("active");
-    }
-  });
+//hide navbar when scrolling down, show when scrolling up. Code modified from https://www.w3schools.com/howto/howto_js_navbar_hide_scroll.asp
+let prevPos = window.pageYOffset;
+window.onscroll = function() {
+  let currentPos = window.pageYOffset;
+  if (prevPos > currentPos) {
+    navigationList.style.display = "block";
+  } else {
+    navigationList.style.display = "none";
+  }
+  prevPos = currentPos;
 }
 
-
-setTimeout(function () {
-  for (let i = 1; i <= numberOfCards; i++){
-    let sectionInView = document.getElementById("section" + i);
-    let navName = "#list-item" + i;
-    let navItem = document.querySelector(navName);
-    if (inViewport(sectionInView)) {
-      navItem.classList.add("active");
-    } else {
-      navItem.classList.remove("active");
-    }
-  };
-}, 0)
-*/
