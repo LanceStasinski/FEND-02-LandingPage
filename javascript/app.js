@@ -44,8 +44,7 @@ for (i = 1; i <= numberOfCards; i++) {
   //when the navbar is clicked, scroll smoothly to the specified section
   newLi.addEventListener("click", function () {
     target.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
+      behavior: "smooth"
     })
   });
 
@@ -64,10 +63,27 @@ let prevPos = window.pageYOffset;
 window.onscroll = function() {
   let currentPos = window.pageYOffset;
   if (prevPos > currentPos) {
-    navigationList.style.display = "block";
+    navigationList.style = "display: block;";
   } else {
-    navigationList.style.display = "none";
+    navigationList.style = "display: none;";
   }
   prevPos = currentPos;
 }
 
+//button takes you to the top of the page when clicked
+const topButton = document.getElementById("top-btn");
+const title = document.getElementById("title");
+topButton.addEventListener("click", function () {
+  title.scrollIntoView({
+    behavior: "smooth"
+  })
+})
+
+//show the 'scroll to top' button only when the top of the page is not in view
+document.addEventListener("scroll", function () {
+  if (inViewport(title)) {
+    topButton.style.display = "none";
+  } else {
+    topButton.style.display = "block";
+  }
+})
