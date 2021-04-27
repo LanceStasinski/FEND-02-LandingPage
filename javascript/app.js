@@ -84,7 +84,7 @@ topButton.addEventListener('click', function () {
 
 //show the 'scroll to top' button only when the top of the page is not in view
 document.addEventListener('scroll', function () {
-  if (inViewport(title)) {
+  if (inViewport(header)) {
     topButton.style.display = 'none';
   } else {
     topButton.style.display = 'block';

@@ -1,9 +1,10 @@
-@import url(header.css);
-@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 /* styling follows most of Udacity's structure, but I have modified some styling
 such as text sizes, fonts, and backgrounds*/
 
-/* body */
+@import url(header.css);
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
+/* --- body --- */
 
 body {
   background-image: linear-gradient(to bottom,rgb(9, 226, 226), #666);
@@ -12,8 +13,7 @@ body {
   z-index: -500;
 }
 
-
-/* typography */
+/* --- typography --- */
 
 h1 {
   font-size: 3em;
@@ -39,7 +39,7 @@ p {
   font-size: 1.5em;
 }
 
-/* layout */
+/* --- layout --- */
 
 main {
   margin: 10vh 1em 10vh;
@@ -55,8 +55,7 @@ section {
   min-height: 80vh;
 }
 
-
-/* landing container */
+/* --- landing container --- */
 
 .landing {
   padding: 1em;
@@ -71,6 +70,7 @@ section {
   }
 }
 
+/* Every other section (even) is aligned to the right of the page */
 section:nth-last-of-type(even) .landing{
   margin-right: 0;
   text-align: right;
@@ -82,7 +82,7 @@ section:nth-last-of-type(even) .landing{
 }
 
 
-/* button */
+/* --- button --- */
 
 #top-btn {
   height: 50px;
@@ -98,6 +98,7 @@ section:nth-last-of-type(even) .landing{
   box-shadow: 0px 0px 0px 1px rgba(1, 1, 1, 0.3);
 }
 
+/* button moves to center when screen size is below 300px */
 @media only screen and (max-width: 300px) {
   #top-btn {
     height: 50px;
@@ -130,6 +131,7 @@ footer {
   padding: 4px;
 }
 
+/*font size decreases when screen size is less than 300px */
 @media only screen and (max-width: 300px) {
   footer {
   font-size: 0.75em;
