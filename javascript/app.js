@@ -18,6 +18,7 @@ inViewport = function(element) {
 const navigationList = document.getElementById('nav-list');
 
 //get the number of sections. The number will be used in the following for loop.
+//This loop was inspired by that available at https://mischegoss.github.io/Udacity-Landing-Page/
 const numberOfCards = document.getElementsByClassName('landing').length;
 
 for (i = 1; i <= numberOfCards; i++) {
