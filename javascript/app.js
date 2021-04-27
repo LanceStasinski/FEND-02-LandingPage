@@ -1,6 +1,6 @@
 //function that detects if element is partially in viewport.
 //Modified from https://www.javascripttutorial.net/dom/css/check-if-an-element-is-visible-in-the-viewport/
-const inViewport = function(element) {
+inViewport = function(element) {
   //get an element's position and position relative to the viewport
   const rect = element.getBoundingClientRect();
   //return true if top and left of an element are in the window and the bottom
@@ -71,6 +71,7 @@ window.onscroll = function() {
   } else {
     navigationList.style = 'display: none;';
   }
+  //resets Y position
   prevPos = currentPos;
 }
 
