@@ -8,58 +8,49 @@ inViewport = function(element) {
   return (
       rect.top >= 0 &&
       rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      rect.bottom <= (window.innerHeight) &&
+      rect.right <= (window.innerWidth)
   );
 }
 
 //build the menu using section information
 
 const navigationList = document.getElementById('nav-list');
-
 //get the number of sections. The number will be used in the following for loop.
-//This loop was inspired by that available at https://mischegoss.github.io/Udacity-Landing-Page/
-const numberOfCards = document.getElementsByClassName('landing').length;
+const landings = document.getElementsByClassName('landing').length;
 
-for (i = 1; i <= numberOfCards; i++) {
-  //create a string that specifies an h2 element within the section
-  let item = '#section-' + i + '-title';
-  //create a string to link to the item later
-  let itemLink = '#section' + i;
-  //get the h2 element
-  let itemVal = document.querySelector(item);
-  //extract the text of the h2 element and store as a variable
-  let itemText = itemVal.textContent;
-  //create a new list item
+
+//This loop was originally inspired by https://mischegoss.github.io/Udacity-Landing-Page/.
+//The first submission of this project was flagged as plagiarism due to being too
+//similar to the code at the link above. I have since significantly reduced the
+//code and have used new element properties.
+
+
+for (i = 1; i <= landings; i++) {
+  //Create a nav list item
   let newLi = document.createElement('li');
-  //create text node with the title of the section
-  let liText = document.createTextNode(itemText);
-  //append the text node to the list item
-  newLi.appendChild(liText);
-  //give the new list item an ID
-  let liID = '#list-item' + i;
-  liID.id = liID;
-  //apend the list item to the navigation list
+  newLi.innerHTML = "Section " + i;
   navigationList.appendChild(newLi);
-  //store the linked section as a variable
-  let target = document.querySelector(itemLink);
 
-  //when the navbar is clicked, scroll smoothly to the specified section
-  newLi.addEventListener('click', function () {
-    target.scrollIntoView({behavior: 'smooth'})
-  });
-
-  //when linked section is partially in view, set the li class to 'active', also
-  //make the linked section 'active'
+  let section = document.querySelector("#section" + i);
+  //If the user scrolls, the section and its associated nav list item recieve an
+  //active style
   document.addEventListener('scroll', function () {
-    if (inViewport(target)) {
+    if (inViewport(section)) {
       newLi.classList.add('active');
-      target.classList.add('section-active');
+      section.classList.add('section-active');
     } else {
       newLi.classList.remove('active');
-      target.classList.remove('section-active');
+      section.classList.remove('section-active');
     }
   })
+
+  //when the user clicks the navigation item, the pages smoothly scrolls down to
+  //the start of the associated section
+  newLi.addEventListener('click', function () {
+    section.scrollIntoView({behavior: 'smooth', block: "start"})
+  });
+
 }
 
 //hide navbar when scrolling down, show when scrolling up.
