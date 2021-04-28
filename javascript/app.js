@@ -43,14 +43,13 @@ for (i = 1; i <= landings; i++) {
       newLi.classList.remove('active');
       section.classList.remove('section-active');
     }
-  })
+  });
 
   //when the user clicks the navigation item, the pages smoothly scrolls down to
   //the start of the associated section
   newLi.addEventListener('click', function () {
     section.scrollIntoView({behavior: 'smooth', block: "start"})
   });
-
 }
 
 //hide navbar when scrolling down, show when scrolling up.
