@@ -132,7 +132,7 @@ footer {
 }
 
 /*font size decreases when screen size is less than 300px */
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 450px) {
   footer {
   font-size: 0.5em;
   }

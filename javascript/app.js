@@ -1,24 +1,25 @@
-//function that detects if element is partially in viewport.
+//function that detects if the whole element is in viewport or if the size of the
+//element is greater than the inner height of the window (maintains active
+//styling when an element is larger than the viewport due to small screen size.)
 //Modified from https://www.javascripttutorial.net/dom/css/check-if-an-element-is-visible-in-the-viewport/
-inViewport = function(element) {
-  //get an element's position and position relative to the viewport
+//In a previous submission, this function only detected if a whole object was in
+//the viewport which was problematic if the viewport height was less that the
+//height of an element.
+
+inViewport = function (element) {
   const rect = element.getBoundingClientRect();
-  //return true if top and left of an element are in the window and the bottom
-  //and right are either in the window or client within a window
-  return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight) &&
-      rect.right <= (window.innerWidth)
+  return(
+    (rect.top >= 0 && rect.bottom <= window.innerHeight) ||
+    (rect.top <= window.innerHeight && rect.bottom >= window.innerHeight)
   );
 }
 
 //build the menu using section information
 
 const navigationList = document.getElementById('nav-list');
+
 //get the number of sections. The number will be used in the following for loop.
 const landings = document.getElementsByClassName('landing').length;
-
 
 //This loop was originally inspired by https://mischegoss.github.io/Udacity-Landing-Page/.
 //The first submission of this project was flagged as plagiarism due to being too
@@ -31,11 +32,17 @@ for (i = 1; i <= landings; i++) {
   let newLi = document.createElement('li');
   newLi.innerHTML = "Section " + i;
   navigationList.appendChild(newLi);
-
   let section = document.querySelector("#section" + i);
-  //If the user scrolls, the section and its associated nav list item recieve an
-  //active style
+
   document.addEventListener('scroll', function () {
+    //show the nav bar for 5 seconds when the user scrolls
+    navigationList.style = 'display: block;';
+    setTimeout(function () {
+    navigationList.style = 'display: none';
+    }, 5000);
+
+    //add active styling to the navigation items and sections if the sections
+    //are in the viewport
     if (inViewport(section)) {
       newLi.classList.add('active');
       section.classList.add('section-active');
@@ -50,20 +57,6 @@ for (i = 1; i <= landings; i++) {
   newLi.addEventListener('click', function () {
     section.scrollIntoView({behavior: 'smooth', block: "start"})
   });
-}
-
-//hide navbar when scrolling down, show when scrolling up.
-//Code modified from https://www.w3schools.com/howto/howto_js_navbar_hide_scroll.asp
-let prevPos = window.pageYOffset;
-window.onscroll = function() {
-  let currentPos = window.pageYOffset;
-  if (prevPos > currentPos) {
-    navigationList.style = 'display: block;';
-  } else {
-    navigationList.style = 'display: none;';
-  }
-  //resets Y position
-  prevPos = currentPos;
 }
 
 //button takes you to the top of the page when clicked
