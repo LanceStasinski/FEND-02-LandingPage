@@ -21,11 +21,8 @@ const navigationList = document.getElementById('nav-list');
 //get the number of sections. The number will be used in the following for loop.
 const landings = document.getElementsByClassName('landing').length;
 
-//This loop was originally inspired by https://mischegoss.github.io/Udacity-Landing-Page/.
-//The first submission of this project was flagged as plagiarism due to being too
-//similar to the code at the link above. I have since significantly reduced the
-//code and have used new element properties.
-
+//This loop was originally inspired by https://mischegoss.github.io/Udacity-Landing-Page/,
+// but I have since significantly reduced the code and have used new element properties.
 
 for (i = 1; i <= landings; i++) {
   //Create a nav list item
