@@ -6,10 +6,11 @@
 //the viewport which was problematic if the viewport height was less that the
 //height of an element.
 
-inViewport = function (element) {
+inViewport = function (element, proportion) {
   const rect = element.getBoundingClientRect();
   return (
-    (rect.top <= window.innerHeight && rect.bottom >= 0.5 * window.innerHeight)
+    rect.top <= window.innerHeight &&
+    rect.bottom >= proportion * window.innerHeight
   );
 };
 
@@ -23,7 +24,7 @@ const cards = document.getElementsByClassName("card").length;
 //This loop was originally inspired by https://mischegoss.github.io/Udacity-Landing-Page/,
 // but I have since significantly reduced the code and have used new element properties.
 
-for (i = 1; i <= cards; i++) {
+for (let i = 1; i <= cards; i++) {
   //Create a nav list item
   let newLi = document.createElement("li");
   newLi.innerHTML = "Section " + i;
@@ -32,19 +33,25 @@ for (i = 1; i <= cards; i++) {
 
   document.addEventListener("scroll", function () {
     //show the nav bar for 5 seconds when the user scrolls
-    navigationList.style = "display: block;";
-    setTimeout(function () {
-      navigationList.style = "display: none";
-    }, 5000);
+    // navigationList.style = "display: block;";
+    // setTimeout(function () {
+    //   navigationList.style = "display: none";
+    // }, 5000);
 
     //add active styling to the navigation items and sections if the sections
     //are in the viewport
-    if (inViewport(section)) {
-      newLi.classList.add("active");
+    if (inViewport(section, 0.5)) {
+      // newLi.classList.add("active");
       section.classList.add("section-active");
     } else {
-      newLi.classList.remove("active");
+      // newLi.classList.remove("active");
       section.classList.remove("section-active");
+    }
+
+    if (inViewport(section, 1)) {
+      newLi.classList.add("active");
+    } else {
+      newLi.classList.remove("active");
     }
   });
 
@@ -64,7 +71,8 @@ topButton.addEventListener("click", function () {
 
 //show the 'scroll to top' button only when the top of the page is not in view
 document.addEventListener("scroll", function () {
-  if (inViewport(header)) {
+  const rect = header.getBoundingClientRect()
+  if (rect.top >= 0) {
     topButton.style.display = "none";
   } else {
     topButton.style.display = "block";

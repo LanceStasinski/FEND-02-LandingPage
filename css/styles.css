@@ -24,7 +24,7 @@ h1 {
 @media only screen and (min-width: 35em) {
   h1 {
     font-size: 7em;
-    margin: 2em 4rem 2em;
+    margin: 2em 4rem 3em;
   }
 }
 
@@ -32,6 +32,7 @@ h2 {
   border-bottom: 1px solid white;
   font-size: 3em;
   font-family: "Poiret One", monospace;
+  margin-top: 0;
 }
 
 p {
@@ -47,7 +48,7 @@ main {
 
 .main-hero {
   min-height: 40vh;
-  padding-top: 3em;
+  padding-top: 2em;
 }
 
 section {
@@ -58,9 +59,10 @@ section {
 /* --- landing container --- */
 
 .card {
-  padding: 4em;
+  padding: 0 4em 4em 4em;
   text-align: left;
   margin-left: 0;
+  margin-top: 0.5rem;
   height: 100vh;
 }
 
@@ -82,6 +84,7 @@ section:nth-last-of-type(even) .card {
 /* --- button --- */
 
 #top-btn {
+  display: none;
   height: 50px;
   width: 50px;
   border-radius: 50%;
