@@ -70,11 +70,23 @@ topButton.addEventListener("click", function () {
 });
 
 //show the 'scroll to top' button only when the top of the page is not in view
+const navBar = document.getElementById("navbar");
+let navBarTimer = setTimeout(function () {
+  navBar.style.display = "block";
+}, 5000);
 document.addEventListener("scroll", function () {
-  const rect = header.getBoundingClientRect()
+  const rect = header.getBoundingClientRect();
   if (rect.top >= 0) {
     topButton.style.display = "none";
+    clearTimeout(navBarTimer);
+    navBar.style.display = "block";
   } else {
     topButton.style.display = "block";
+    navBar.style.display = "block";
+    clearTimeout(navBarTimer);
+
+    navBarTimer = setTimeout(function () {
+      navBar.style.display = "none";
+    }, 2000);
   }
 });
