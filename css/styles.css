@@ -2,12 +2,12 @@
 such as text sizes, fonts, and backgrounds*/
 
 @import url(header.css);
-@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 
 /* --- body --- */
 
 body {
-  background-image: linear-gradient(to bottom,rgb(9, 226, 226), #666);
+  background-image: linear-gradient(to bottom, rgb(9, 226, 226), #666);
   margin: 0;
   color: white;
   z-index: -500;
@@ -18,20 +18,20 @@ body {
 h1 {
   font-size: 3em;
   margin: 2em 1rem;
-  font-family: 'Poiret One', monospace;
+  font-family: "Poiret One", monospace;
 }
 
-@media only screen and (min-width: 35em){
+@media only screen and (min-width: 35em) {
   h1 {
     font-size: 7em;
-    margin: 2em 4rem 1em;
+    margin: 2em 4rem 2em;
   }
 }
 
 h2 {
   border-bottom: 1px solid white;
   font-size: 3em;
-  font-family: 'Poiret One', monospace;
+  font-family: "Poiret One", monospace;
 }
 
 p {
@@ -57,30 +57,27 @@ section {
 
 /* --- landing container --- */
 
-.landing {
-  padding: 1em;
+.card {
+  padding: 4em;
   text-align: left;
   margin-left: 0;
-  padding-left: 0;
-}
-
-@media only screen and (min-width: 35em){
-  .landing {
-    padding: 4em;
-  }
+  height: 100vh;
 }
 
 /* Every other section (even) is aligned to the right of the page */
-section:nth-last-of-type(even) .landing{
+section:nth-last-of-type(even) .card {
   margin-right: 0;
   text-align: right;
 }
 
 /* when section is in view, add gray background with a gradient */
 .section-active {
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, .5));
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.5)
+  );
 }
-
 
 /* --- button --- */
 
@@ -115,7 +112,7 @@ section:nth-last-of-type(even) .landing{
   }
 }
 
-#top-btn:hover{
+#top-btn:hover {
   transform: scale(1.2);
   opacity: 1;
   cursor: pointer;
@@ -134,12 +131,6 @@ footer {
 /*font size decreases when screen size is less than 300px */
 @media only screen and (max-width: 450px) {
   footer {
-  font-size: 0.5em;
+    font-size: 0.5em;
   }
 }
-
-
-
-
-
-
