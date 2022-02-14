@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poiret+One&display=swap');
+
 #navbar {
   position: fixed;
   top: 0;
@@ -27,10 +29,11 @@
   header li {
     float: left;
     display: block;
-    color: black;
+    font-family: 'Open Sans', sans-serif;
+    color: #444;
     text-align: center;
     padding: 14px 16px;
-  } 
+  }
 
   header li:hover {
     background-color: #888;

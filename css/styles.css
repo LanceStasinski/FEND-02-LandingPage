@@ -2,23 +2,18 @@
 such as text sizes, fonts, and backgrounds*/
 
 @import url(header.css);
-@import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
-
-/* --- body --- */
-
-body {
-  background-image: linear-gradient(to bottom, rgb(9, 226, 226), #666);
-  margin: 0;
-  color: white;
-  z-index: -500;
-}
-
+@import url(backdrop.css);
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Poiret+One&display=swap");
 /* --- typography --- */
+body {
+  color: white;
+  margin: 0;
+}
 
 h1 {
   font-size: 3em;
   margin: 2em 1rem;
-  font-family: "Poiret One", monospace;
+  font-family: "Poiret One", sans-serif;
 }
 
 @media only screen and (min-width: 35em) {
@@ -31,13 +26,14 @@ h1 {
 h2 {
   border-bottom: 1px solid white;
   font-size: 3em;
-  font-family: "Poiret One", monospace;
+  font-family: "Poiret One", sans-serif;
   margin-top: 0;
 }
 
 p {
   line-height: 1.5em;
   font-size: 1.5em;
+  font-family: "Open Sans", sans-serif;
 }
 
 /* --- layout --- */
